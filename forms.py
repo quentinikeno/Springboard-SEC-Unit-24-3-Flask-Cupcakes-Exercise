@@ -8,4 +8,4 @@ class CupcakeForm(FlaskForm):
     flavor = StringField("Flavor", validators=[InputRequired(message="Flavor must be specified.")])
     size = StringField("Size", validators=[InputRequired(message="Size must be specified.")])
     rating = FloatField("Rating", validators=[InputRequired(message="Rating must be specified.")])
-    image_url = StringField("Image URL", validators=[Optional(), URL()])
+    image = StringField("Image URL", validators=[Optional(), URL()])

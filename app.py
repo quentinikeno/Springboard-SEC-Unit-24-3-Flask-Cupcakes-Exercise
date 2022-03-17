@@ -39,3 +39,18 @@ def create_cupcake():
     serialized = new_cupcake.serialize()
     json = jsonify(cupcake=serialized)
     return (json, 201)
+
+@app.route("/api/cupcakes/<int:id>", methods=["PATCH"])
+def update_cupcake(id):
+    """Update a cupcake using the cupcake id and return JSON for the new cupcake.  {cupcake: {id, flavor, size, rating, image}}"""
+    cupcake = Cupcake.query.get_or_404(id)
+    
+    cupcake.flavor = request.json.get("flavor", cupcake.flavor)
+    cupcake.size = request.json.get("size", cupcake.size)
+    cupcake.rating = request.json.get("rating", cupcake.rating)
+    cupcake.image = request.json.get("image", cupcake.image)
+
+    db.session.commit()
+    
+    serialized = cupcake.serialize()
+    return jsonify(cupcake=serialized)

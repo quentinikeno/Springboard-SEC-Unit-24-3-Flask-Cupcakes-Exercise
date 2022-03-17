@@ -41,7 +41,7 @@ class Cupcake(db.Model):
     image = db.Column(
         db.Text,
         nullable=False,
-        defualt = DEFAULT_IMAGE_URL
+        default = DEFAULT_IMAGE_URL
     )
     
     def __repr__(self):

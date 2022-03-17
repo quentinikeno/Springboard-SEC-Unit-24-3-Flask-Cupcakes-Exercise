@@ -47,3 +47,13 @@ class Cupcake(db.Model):
     def __repr__(self):
         """Representation of Cupcake instance."""
         return f"<Cupcake id={self.id} flavor={self.flavor} size={self.size} rating={self.rating} image={self.image}>"
+
+    def serialize(self):
+        """Turn Cupcake model instance data into a Python dictionary."""
+        return {
+            "id": self.id,        
+            "flavor": self.flavor,
+            "size": self.size,    
+            "rating": self.rating,
+            "image": self.image
+        }

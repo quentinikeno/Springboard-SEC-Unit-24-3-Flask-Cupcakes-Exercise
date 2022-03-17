@@ -16,3 +16,10 @@ def list_all_cupcakes():
     cupcakes = Cupcake.query.all()
     serialized = [cupcake.serialize() for cupcake in cupcakes]
     return jsonify(cupcakes=serialized)
+
+@app.route("/api/cupcakes/<int:id>")
+def list_single_cupcake(id):
+    """Return JSON of a single cupcake."""
+    cupcake = Cupcake.query.get_or_404(id)
+    serialized = cupcake.serialize()
+    return jsonify(cupcake=serialized)

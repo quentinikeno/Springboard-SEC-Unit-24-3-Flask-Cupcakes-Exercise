@@ -1,6 +1,6 @@
 """Flask app for Cupcakes"""
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from models import db, connect_db, Cupcake
 
 app = Flask(__name__)
@@ -9,6 +9,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 
 connect_db(app)
+
+#HTML Routes
+@app.route('/')
+def index():
+    """Shows index page."""
+    return render_template('index.html')
+
+#API Routes
 
 @app.route("/api/cupcakes")
 def list_all_cupcakes():

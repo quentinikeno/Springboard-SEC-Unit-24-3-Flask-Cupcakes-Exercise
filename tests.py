@@ -133,3 +133,14 @@ class CupcakeViewsTestCase(TestCase):
                     "image": "http://test.com/cupcake2.jpg"
                 }
             })
+        
+    def test_delete_cupcake(self):
+        """Test deleting a cupcake."""
+        with app.test_client() as client:
+            url = f"/api/cupcakes/{self.cupcake.id}"
+            resp = client.delete(url)
+            
+            self.assertEqual(resp.status_code, 200)
+        
+            data = resp.json
+            self.assertEqual(data, {"message": "Deleted"})

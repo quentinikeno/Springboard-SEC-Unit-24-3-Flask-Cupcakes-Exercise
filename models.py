@@ -40,7 +40,7 @@ class Cupcake(db.Model):
     
     image = db.Column(
         db.Text,
-        nullable=False
+        nullable=False,
         defualt = DEFAULT_IMAGE_URL
     )
     
